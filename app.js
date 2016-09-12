@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use('/api/posts', postRouter); 
 
 app.get('/', function(req, res){
-    res.send('welcome to my API!');
+    res.send('welcome to my Blog API!');
 });
 
 app.listen(port, function(){

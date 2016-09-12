@@ -4,7 +4,7 @@ var express = require('express'),
 
 
 var db;
-console.log('Hello from Blog API');
+console.log('Hello from Blog API 2');
 if(process.env.ENV == 'Test'){
 
     db = mongoose.connect('mongodb://localhost/blogAPI_test');

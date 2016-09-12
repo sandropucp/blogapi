@@ -11,12 +11,12 @@ if(process.env.ENV == 'Test'){
 }
 
 else{
-    db= mongoose.connect('mongodb://localhost/blogAPI');
-    //db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/blogapi');
+    //db= mongoose.connect('mongodb://localhost/blogAPI');
+    db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/blogapi');
 }
 
 var app = express();
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 
 var Post = require('./models/postModel');
 postRouter = require('./Routes/postRoutes')(Post);

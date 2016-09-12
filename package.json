@@ -2,6 +2,9 @@
   "name": "BlogAPI",
   "version": "0.0.1",
   "description": "Simple Blog Express JS API",
+  "engines": {
+    "node": "5.9.1"
+  },
   "main": "app.js",
   "scripts": {
     "test": "gulp test.js",

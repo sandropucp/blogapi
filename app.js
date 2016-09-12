@@ -16,7 +16,7 @@ else{
 }
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 var Post = require('./models/postModel');
 postRouter = require('./Routes/postRoutes')(Post);

@@ -1,10 +1,10 @@
 {
-  "name": "BookAPI",
-  "version": "0.0.0",
-  "description": "",
+  "name": "BlogAPI",
+  "version": "0.0.1",
+  "description": "Simple Blog Express JS API",
   "main": "app.js",
   "scripts": {
-    "test": "node test.js",
+    "test": "gulp test.js",
     "start": "gulp"
   },
   "dependencies": {
@@ -22,5 +22,5 @@
     "supertest": "^2.0.0"
   },
   "author": "Sandro Sanchez",
-  "license": "ISC"
+  "license": "MIT"
 }

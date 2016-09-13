@@ -6,7 +6,6 @@ var express = require('express'),
 var db;
 console.log('Hello from Blog API 2');
 if(process.env.ENV == 'Test'){
-
     db = mongoose.connect('mongodb://localhost/blogAPI_test');
 }
 
@@ -21,17 +20,21 @@ var port = process.env.PORT || 3000;
 var Post = require('./models/postModel');
 postRouter = require('./Routes/postRoutes')(Post);
 
+var Comment = require('./models/commentModel');
+commentRouter = require('./Routes/commentRoutes')(Comment);
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use('/api/posts', postRouter); 
+app.use('/api/comments', commentRouter); 
 
 app.get('/', function(req, res){
-    res.send('welcome to my Blog API!');
+    res.send('welcome to my Blog API V2!');
 });
 
 app.listen(port, function(){
     console.log('Gulp is running my app on  PORT: ' + port);
 });
 
-module.exports = app;
+module.exports = app; 

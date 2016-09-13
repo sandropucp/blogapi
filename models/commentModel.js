@@ -1,12 +1,12 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var postModel = new Schema({
-    postid:{type: Number},
-    title: {type: String},
+var commentModel = new Schema({
+    commentid:{type: Number},
+    postid:{type:Number},
     content: {type: String},
     author: {type: String},
     status: {type: String}
 });
 
-module.exports= mongoose.model('Post', postModel);
+module.exports= mongoose.model('Comment', commentModel);

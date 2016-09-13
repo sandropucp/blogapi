@@ -30,7 +30,7 @@ app.use('/api/posts', postRouter);
 app.use('/api/comments', commentRouter); 
 
 app.get('/', function(req, res){
-    res.send('welcome to my Blog API V2!');
+    res.send('welcome to my Blog API V3!');
 });
 
 app.listen(port, function(){

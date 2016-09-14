@@ -28,7 +28,11 @@ app.use('/api/stories', storyRouter);
 app.use('/api/users', userRouter); 
 
 app.get('/', function(req, res){
+<<<<<<< HEAD
     res.send('welcome to my Blog API!');
+=======
+    res.send('welcome to my Blog API V3!');
+>>>>>>> 716ea28c63c695f01d425339a69871df002ecd02
 });
 
 app.listen(port, function(){

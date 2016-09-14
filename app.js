@@ -2,39 +2,37 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-
 var db;
-console.log('Hello from Blog API 2');
+console.log('Hello from Blog API');
 if(process.env.ENV == 'Test'){
     db = mongoose.connect('mongodb://localhost/blogAPI_test');
 }
-
 else{
-    //db= mongoose.connect('mongodb://localhost/blogAPI');
-    db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
+    db= mongoose.connect('mongodb://localhost/blogAPI');
+    //db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
 }
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
-var Post = require('./models/postModel');
-postRouter = require('./Routes/postRoutes')(Post);
+var Story = require('./models/storyModel');
+storyRouter = require('./routes/storyRoutes')(Story);
 
-var Comment = require('./models/commentModel');
-commentRouter = require('./Routes/commentRoutes')(Comment);
+var User = require('./models/userModel');
+userRouter = require('./routes/userRoutes')(User);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use('/api/posts', postRouter); 
-app.use('/api/comments', commentRouter); 
+app.use('/api/stories', storyRouter); 
+app.use('/api/users', userRouter); 
 
 app.get('/', function(req, res){
-    res.send('welcome to my Blog API V2!');
+    res.send('welcome to my Blog API!');
 });
 
 app.listen(port, function(){
-    console.log('Gulp is running my app on  PORT: ' + port);
+    console.log('running app on  PORT: ' + port);
 });
 
 module.exports = app; 

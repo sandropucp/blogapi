@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sandropucp/blogapi.svg?branch=master)](https://travis-ci.org/sandropucp/blogapi)
+
 # Blog Express JS Rest API
 
 Rest Blog API with  unit testing and integration testing

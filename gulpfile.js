@@ -15,7 +15,7 @@ gulp.task('lint', () => {
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test',['lint'], function () {
+gulp.task('test', ['lint'], function () {
     //env({ vars: { ENV: 'Test' } });
     gulp.src('tests/**/*.js', { read: false })
         .pipe(gulpMocha({ reporter: 'spec' }))
@@ -32,9 +32,7 @@ gulp.task('servedev', function () {
     nodemon({
         script: 'app.js',
         ext: 'js',
-        env: {
-            //PORT: 8000
-        },
+        //env: {PORT: 8000},
         ignore: ['./node_modules/**']
     })
         .on('restart', function () {

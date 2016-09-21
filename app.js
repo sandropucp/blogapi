@@ -1,7 +1,8 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
-    env = require('env2')('config.env');
+    bodyParser = require('body-parser');
+
+//require('env2')('config.env');
 
 var db;
 console.log('Hello from Blog API');

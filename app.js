@@ -6,13 +6,10 @@ var express = require('express'),
 var db;
 console.log('Hello from Blog API');
 
-if (process.env.ENV == 'Test') {
-    //db = mongoose.connect('mongodb://localhost/blogAPI_test');
-    //db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
-    db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
+if (process.env.ENV == 'Test') {  
+    db = mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
 }
-else {
-    //db = mongoose.connect('mongodb://localhost/blogAPI');    
+else {        
     db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 

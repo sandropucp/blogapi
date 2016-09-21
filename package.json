@@ -19,7 +19,9 @@
     "mocha",
     "REST",
     "API",
-    "wallabyjs"
+    "wallabyjs",
+    "Heroku",
+    "MongoLab"
   ],
   "dependencies": {
     "body-parser": "^1.15.2",

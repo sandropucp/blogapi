@@ -54,7 +54,7 @@ describe('userController', function () {
             User.create.callsArgWith(1, null, result);
             controller.post(req, res, next);
             expect(res.json).to.have.been.calledOnce;
-            expect(res.status).to.have.been.calledWith(200);
+            expect(res.status).to.have.been.calledWith(204);
             expect(res.json).to.have.been.calledWith(result);
         });
 

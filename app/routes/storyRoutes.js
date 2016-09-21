@@ -5,7 +5,7 @@ var _ = require('lodash');
 var routes = function (Story, Comment) {
     var storyRouter = express.Router();
 
-    var storyController = require('../controllers/storyController')(Story, Comment)
+    var storyController = require('../controllers/storyController')(Story, Comment);
     storyRouter.route('/')
         .post(storyController.post)
         .get(storyController.getItems);
@@ -86,9 +86,9 @@ var routes = function (Story, Comment) {
 
     storyRouter.route('/:storyId/comments')
         .post(function (req, res) {
-            var comment = new Comment(req.body)
-            var currentStory = req.story
-            currentStory.comments.push(comment)
+            var comment = new Comment(req.body);
+            var currentStory = req.story;
+            currentStory.comments.push(comment);
             currentStory.save(function (err, commentresult) {
                 if (err) {
                     res.status(500);
@@ -96,7 +96,7 @@ var routes = function (Story, Comment) {
                 }
                 res.status(200);
                 res.json(commentresult);
-            })
+            });
         });
 
     storyRouter.route('/:storyId/comments/:commentId')

@@ -15,7 +15,7 @@ var storyController = function (Story, Comment) {
                 res.json(story);
             });
         }
-    }
+    };
 
     var getItems = function (req, res, next) {
         var query = {};
@@ -30,14 +30,13 @@ var storyController = function (Story, Comment) {
             res.status(200);
             res.json(stories);
         });
-    }
+    };
 
     return {
         post: post,
         getItems: getItems     
-    }
+    };
 
-
-}
+};
 
 module.exports = storyController;

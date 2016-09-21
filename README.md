@@ -10,7 +10,7 @@ Rest Blog API with  unit testing and integration testing
 - Integration Testing via [supertest](https://github.com/visionmedia/supertest)
 - Test code coverage via [wallabyjs](https://wallabyjs.com/)
 - Database via [mongo](https://www.mongodb.com/) and [mongoose](http://mongoosejs.com/)
-- Test and deployment via [travis-ci](https://travis-ci.org/)
+- Continuous Integration via [travis-ci](https://travis-ci.org/) and (http://matthewmeye.rs/blog/post/templating-language-part-2/)
 
 
 ## Getting Started

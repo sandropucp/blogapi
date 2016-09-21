@@ -15,7 +15,7 @@ var userController = function (User) {
                 res.json(user);
             });
         }
-    }
+    };
 
     var getItems = function (req, res, next) {
         var query = {};
@@ -31,12 +31,12 @@ var userController = function (User) {
             res.status(200);
             res.json(users);
         });
-    }
+    };
    
     return {
         post: post,
         getItems: getItems,        
-    }
-}
+    };
+};
 
 module.exports = userController;

@@ -3,23 +3,21 @@ var gulp = require('gulp'),
     gulpMocha = require('gulp-mocha'),
     env = require('gulp-env'),
     supertest = require('supertest'),
-    jshint = require('gulp-jshint');
+    jshint = require('gulp-jshint'),
+    stylish = require('jshint-stylish');
 
-gulp.task('default',['jshint','test','serve']);
+gulp.task('default', ['test', 'serve']);
 
-gulp.task('jshint', () => {
-    return gulp.src('./*.js')
+gulp.task('lint', () => {
+    return gulp.src('./app/**/*.js,./tests/**/*.js')
         .pipe(jshint())
+        .pipe(jshint.reporter(stylish))
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', function () {
-    env({ vars: { ENV: 'Test' } });
+gulp.task('test', ['lint'], function () {
     gulp.src('tests/**/*.js', { read: false })
-        .pipe(gulpMocha({ reporter: 'nyan' }))
-        .once('end', function () {
-            process.exit();
-        });
+        .pipe(gulpMocha({ reporter: 'spec' }))
 });
 
 gulp.task('serve', function () {

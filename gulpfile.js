@@ -15,7 +15,7 @@ gulp.task('lint', () => {
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test',[lint], function () {
+gulp.task('test',['lint'], function () {
     env({ vars: { ENV: 'Test' } });
     gulp.src('tests/**/*.js', { read: false })
         .pipe(gulpMocha({ reporter: 'spec' }))

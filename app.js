@@ -27,6 +27,10 @@ app.use(bodyParser.json());
 app.use('/api/stories', storyRouter);
 app.use('/api/users', userRouter);
 
+app.get('/', function (req, res) {
+    res.send('welcome to my Blog API!');
+});
+
 app.use(function (err, req, res, next) {
     // treat as 404
     if (err.message
@@ -52,11 +56,6 @@ app.use(function (req, res) {
         url: req.originalUrl,
         error: 'Not found'
     });
-});
-
-
-app.get('/', function (req, res) {
-    res.send('welcome to my Blog API!');
 });
 
 app.listen(port, function () {

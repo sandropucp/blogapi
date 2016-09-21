@@ -4,25 +4,29 @@ var gulp = require('gulp'),
     env = require('gulp-env'),
     supertest = require('supertest');
 
-gulp.task('default', function(){
-	require('./app.js');
+gulp.task('default', function () {
+    require('./app.js');
 });
 
-gulp.task('serve', function(){
+gulp.task('serve', function () {
     nodemon({
         script: 'app.js',
         ext: 'js',
         env: {
-            PORT:8000
+            PORT: 8000
         },
         ignore: ['./node_modules/**']
     })
-    .on('restart', function(){
-        console.log('Restarting');
-    });
+        .on('restart', function () {
+            console.log('Restarting');
+        });
 });
 
-gulp.task('test', function(){
-    env({vars: {ENV:'Test'}});
-    gulp.src('tests/**/*.js', {read: false})        
+gulp.task('test', function () {
+    env({ vars: { ENV: 'Test' } });
+    gulp.src('tests/**/*.js', { read: false })
+        .pipe(gulpMocha({ reporter: 'nyan' }))
+        .once('end', function () {
+            process.exit();
+        });
 });

@@ -1,5 +1,5 @@
 {
-  "name": "BlogAPI",
+  "name": "blogapi",
   "version": "0.0.1",
   "description": "Blog Express JS API",
   "engines": {
@@ -10,8 +10,20 @@
     "test": "gulp test.js",
     "start": "gulp"
   },
+  "keywords": [
+    "express",
+    "node",
+    "node.js",
+    "mongodb",
+    "mongoose",
+    "mocha",
+    "REST",
+    "API",
+    "wallabyjs"
+  ],
   "dependencies": {
     "body-parser": "^1.15.2",
+    "env2": "^2.1.1",
     "express": "4.13.3",
     "lodash": "^4.16.1",
     "mongoose": "^4.6.0"

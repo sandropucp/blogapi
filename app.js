@@ -1,16 +1,19 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    env = require('env2')('config.env');
 
 var db;
 console.log('Hello from Blog API');
+
 if (process.env.ENV == 'Test') {
     //db = mongoose.connect('mongodb://localhost/blogAPI_test');
-    db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
+    //db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
+    db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 else {
     //db = mongoose.connect('mongodb://localhost/blogAPI');    
-    db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
+    db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 
 var app = express();
@@ -42,7 +45,11 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 
     if (err.stack.includes('ValidationError')) {
-        res.status(422).render('422', { error: err.stack });
+        res.status(422);
+        res.send({
+            message: '422',
+            error: err.stack
+        });
         return;
     }
 
@@ -52,7 +59,8 @@ app.use(function (err, req, res, next) {
 
 // assume 404 since no middleware responded
 app.use(function (req, res) {
-    res.status(404).render('404', {
+    res.status(404);
+    res.send({
         url: req.originalUrl,
         error: 'Not found'
     });

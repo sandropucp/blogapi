@@ -44,12 +44,12 @@ Run API
 npm install
 gulp default
 
-http://localhost:8000/api/stories
-http://localhost:8000/api/stories/:storyId
-http://localhost:8000/api/stories/:storyId/comments
-http://localhost:8000/api/stories/:storyId/comments/:commentId
-http://localhost:8000/api/users
-http://localhost:8000/api/users/:userId
+https://blogapi-express.herokuapp.com/api/stories/api/stories
+https://blogapi-express.herokuapp.com/api/stories/api/stories/:storyId
+https://blogapi-express.herokuapp.com/api/stories/api/stories/:storyId/comments
+https://blogapi-express.herokuapp.com/api/stories/api/stories/:storyId/comments/:commentId
+https://blogapi-express.herokuapp.com/api/stories/api/users
+https://blogapi-express.herokuapp.com/api/stories/api/users/:userId
 
 ```
 

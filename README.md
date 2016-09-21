@@ -34,8 +34,8 @@ Upload data to mongo
 
 ```
 cd C:\Program Files\MongoDB\Server\3.2\bin
-Copy booksJson.js to C:\Program Files\MongoDB\Server\3.2\bin 
-mongo bookAPI < booksJson.js
+Copy blogsData.js to C:\Program Files\MongoDB\Server\3.2\bin 
+mongo DATABASENAME < blogsData.js
 ```
 
 Run API

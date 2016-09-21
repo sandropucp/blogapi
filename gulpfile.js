@@ -10,7 +10,7 @@ gulp.task('default',['jshint','test','serve']);
 gulp.task('jshint', () => {
     return gulp.src('./*.js')
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('test', function () {

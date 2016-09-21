@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "test": "gulp test.js",
-    "start": "gulp serve"
+    "start": "gulp"
   },
   "keywords": [
     "express",

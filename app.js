@@ -1,6 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
+    bodyParser = require('body-parser');
     //env = require('env2')('config.env');
 
 var db;

@@ -31,7 +31,7 @@ app.use('/api/users', userRouter);
 
 app.get('/', function (req, res) {
     res.send('welcome to my Blog API!');
-})
+});
 
 app.use(function (err, req, res, next) {
     // treat as 404

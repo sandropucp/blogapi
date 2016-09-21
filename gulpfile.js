@@ -16,7 +16,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('test',['lint'], function () {
-    env({ vars: { ENV: 'Test' } });
+    //env({ vars: { ENV: 'Test' } });
     gulp.src('tests/**/*.js', { read: false })
         .pipe(gulpMocha({ reporter: 'spec' }))
         // .once('end', function () {

@@ -1,15 +1,13 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+var CommentSchema = require('./commentModel').schema;    
+
 var storyModel = new Schema({
     title: { type: String, default: '', trim: true },
     body: { type: String, default: '', trim: true },
     author: { type: Schema.ObjectId, ref: 'User' },
-    comments: [{
-        body: { type: String, default: '' },
-        author: { type: Schema.ObjectId, ref: 'User' },
-        createdAt: { type: Date, default: Date.now }
-    }],
+    comments: [CommentSchema],
     createdAt: { type: Date, default: Date.now }
 });
 

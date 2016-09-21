@@ -1,4 +1,4 @@
-var storyController = function (Story) {
+var storyController = function (Story, Comment) {
 
     var post = function (req, res, next) {
         if (!req.body.title) {
@@ -11,7 +11,7 @@ var storyController = function (Story) {
                     res.status(500);
                     return next(err);
                 }
-                res.status(200);
+                res.status(201);
                 res.json(story);
             });
         }
@@ -19,7 +19,6 @@ var storyController = function (Story) {
 
     var getItems = function (req, res, next) {
         var query = {};
-
         if (req.query.author) {
             query.author = req.query.author;
         }
@@ -35,8 +34,10 @@ var storyController = function (Story) {
 
     return {
         post: post,
-        getItems: getItems        
+        getItems: getItems     
     }
+
+
 }
 
 module.exports = storyController;

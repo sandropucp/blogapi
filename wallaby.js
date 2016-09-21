@@ -2,13 +2,11 @@ module.exports = function (wallaby) {
     return {
         files: [
             'app.js',
-            'Controllers/*.js',
-            'models/*.js',
-            'Routes/*.js'            
+            'app/**/*.js'            
         ],
 
         tests: [
-            'Tests/*Tests.js'
+            'tests/**/*Tests.js'
         ],
 
         env: {

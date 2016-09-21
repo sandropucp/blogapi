@@ -9,6 +9,7 @@ if (process.env.ENV == 'Test') {
 }
 else {
     db = mongoose.connect('mongodb://localhost/blogAPI');    
+    //db= mongoose.connect('mongodb://sandro:sandro03@ds044679.mlab.com:44679/bookapi');
 }
 
 var app = express();

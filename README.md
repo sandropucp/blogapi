@@ -6,6 +6,7 @@ Rest Blog API with  unit testing and integration testing
 - Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
 - Unit Testing via [chai](http://chaijs.com/) and [sinon](http://sinonjs.org/)
 - Integration Testing via [supertest](https://github.com/visionmedia/supertest)
+- Test code coverage via [wallabyjs](https://wallabyjs.com/)
 - Database via [mongo](https://www.mongodb.com/) and [mongoose](http://mongoosejs.com/)
 
 
@@ -39,7 +40,7 @@ Run API
 ```
 npm install
 gulp default
-go to 
+
 http://localhost:8000/api/stories
 http://localhost:8000/api/stories/:storyId
 http://localhost:8000/api/stories/:storyId/comments

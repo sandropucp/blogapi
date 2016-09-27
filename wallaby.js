@@ -1,8 +1,9 @@
 module.exports = function (wallaby) {
     return {
-        files: [
+        files: [            
             'app.js',
-            'app/**/*.js'            
+            'app/**/*.js',
+            { pattern: '.env', instrument: false }
         ],
 
         tests: [
@@ -10,10 +11,16 @@ module.exports = function (wallaby) {
         ],
 
         env: {
-            type: 'node',            
+            type: 'node',
         },
 
         debug: true,
+        setup: function (wallaby) {
+            console.log('Setup');
+            console.log('Current worker id: ' + wallaby.workerId);
+            console.log('Current session id: ' + wallaby.sessionId);
+            require('dotenv').config(); 
+        },
         workers: {
             initial: 1,
             regular: 1,

@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     gulpMocha = require('gulp-mocha'),
-    env = require('gulp-env'),
+    //env = require('gulp-env'),
     supertest = require('supertest'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish');
@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 gulp.task('default', ['test', 'serve']);
 
 gulp.task('lint', () => {
-    return gulp.src('./app/**/*.js,./tests/**/*.js')
+    return gulp.src('./app/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter(stylish))
         .pipe(jshint.reporter('fail'));

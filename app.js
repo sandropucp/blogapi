@@ -2,14 +2,14 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-require('dotenv').config({silent: true});
+//require('dotenv').config({silent: true});
 
 var db;
 console.log('Hello from Blog API');
 console.log('process.env.ENV: ' + process.env.ENV);
 
 if (process.env.ENV == 'Test') {    
-    db = mongoose.connect(process.env.DB_CONNECTIONSTRINGTEST);
+    db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 else {    
     db = mongoose.connect(process.env.DB_CONNECTIONSTRING);

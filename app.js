@@ -1,5 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
+    cors = require('cors'),
     bodyParser = require('body-parser');
 
 //require('dotenv').config({silent: true});
@@ -24,6 +25,8 @@ storyRouter = require('./app/routes/storyRoutes')(Story, Comment);
 
 var User = require('./app/models/userModel');
 userRouter = require('./app/routes/userRoutes')(User);
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

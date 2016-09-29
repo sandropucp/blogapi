@@ -30,12 +30,7 @@ var storyController = function (Story, Comment) {
                 res.json(stories);
             })
             .populate('author')
-            .populate({
-                path: 'comments',
-                populate: {
-                    path: 'user'
-                }
-            })
+            .populate('comments.author')
             .exec();
     };
 

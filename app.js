@@ -6,7 +6,7 @@ var express = require('express'),
 //require('dotenv').config({silent: true});
 
 var db;
-console.log('Hello from Blog API');
+console.log('Hellos from Blog API');
 console.log('process.env.ENV: ' + process.env.ENV);
 
 if (process.env.ENV == 'Test') {    

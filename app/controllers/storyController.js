@@ -29,7 +29,9 @@ var storyController = function (Story, Comment) {
             }
             res.status(200);
             res.json(stories);
-        });
+        })
+        .populate('author')
+        .exec();
     };
 
     return {

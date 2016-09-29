@@ -4,8 +4,7 @@ var storyController = function (Story, Comment) {
         if (!req.body.title) {
             res.status(400);
             return next('Title is required');
-        }
-        else {
+        } else {
             Story.create(req.body, function (err, story) {
                 if (err) {
                     res.status(500);
@@ -23,20 +22,21 @@ var storyController = function (Story, Comment) {
             query.author = req.query.author;
         }
         Story.find(query, function (err, stories) {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            res.status(200);
-            res.json(stories);
-        })
-        .populate('author')
-        .exec();
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                res.status(200);
+                res.json(stories);
+            })
+            .populate('author')
+            .populate('comments.author')
+            .exec();
     };
 
     return {
         post: post,
-        getItems: getItems     
+        getItems: getItems
     };
 
 };

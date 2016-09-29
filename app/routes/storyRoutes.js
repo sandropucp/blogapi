@@ -12,17 +12,18 @@ var routes = function (Story, Comment) {
 
     storyRouter.use('/:storyId', function (req, res, next) {
         Story.findById(req.params.storyId, function (err, story) {
-            if (err) {
-                res.status(500).send(err);
-            }
-            else if (story) {
-                req.story = story;
-                next();
-            }
-            else {
-                res.status(404).send('no story found');
-            }
-        });
+                if (err) {
+                    res.status(500).send(err);
+                } else if (story) {
+                    req.story = story;
+                    next();
+                } else {
+                    res.status(404).send('no story found');
+                }
+            })
+            .populate('author')
+            .populate('comments.author')
+            .exec();
     });
 
     storyRouter.route('/:storyId')
@@ -73,12 +74,10 @@ var routes = function (Story, Comment) {
         Story.findById(req.params.storyId, function (err, story) {
             if (err) {
                 res.status(500).send(err);
-            }
-            else if (story) {
+            } else if (story) {
                 req.story = story;
                 next();
-            }
-            else {
+            } else {
                 res.status(404).send('no story found');
             }
         });
@@ -104,8 +103,7 @@ var routes = function (Story, Comment) {
             Story.findById(req.params.storyId, function (err, story) {
                 if (err) {
                     res.status(500).send(err);
-                }
-                else if (story) {
+                } else if (story) {
                     var currentStory = story;
                     var index = currentStory.comments
                         .map(comment => comment._id.toString())
@@ -116,8 +114,7 @@ var routes = function (Story, Comment) {
                         res.status(200);
                         res.json(currentStory.comments[index]);
                     }
-                }
-                else {
+                } else {
                     res.status(401).send('no story found');
                 }
             });
@@ -126,8 +123,7 @@ var routes = function (Story, Comment) {
             Story.findById(req.params.storyId, function (err, story) {
                 if (err) {
                     res.status(500).send(err);
-                }
-                else if (story) {
+                } else if (story) {
                     var currentStory = story;
                     var index = currentStory.comments
                         .map(comment => comment._id.toString())
@@ -143,8 +139,7 @@ var routes = function (Story, Comment) {
                         res.json(currentStory);
                     }
 
-                }
-                else {
+                } else {
                     res.status(401).send('no story found');
                 }
             });

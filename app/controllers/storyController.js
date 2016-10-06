@@ -34,7 +34,10 @@ var storyController = function (Story, Comment) {
             })
             .populate('author')
             .populate('comments.author')
-            .exec();
+            .exec(function (err, story) {
+                if (err) return console.log('The creator is %s', story.title);
+                console.log('The creator is %s', story.title);
+            });
     };
 
     return {

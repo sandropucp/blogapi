@@ -37,7 +37,7 @@ var userController = function (User) {
 
         if (req.body.email) {
             query.email = req.body.email;
-            User.find(query, function (err, user) {
+            User.findOne(query, function (err, user) {
                 if (err) {
                     res.status(500);
                     return next(err);

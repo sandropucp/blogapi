@@ -16,6 +16,8 @@ else {
     db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 
+console.log('process.env.ENV: ' + process.env.ENV);
+
 var app = express();
 var port = process.env.PORT || 3001;
 

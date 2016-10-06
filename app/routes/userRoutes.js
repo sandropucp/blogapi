@@ -8,6 +8,9 @@ var routes = function (User) {
         .post(userController.post)
         .get(userController.getItems);
 
+    userRouter.route('/authentication')   
+        .post(userController.authentication); 
+
     userRouter.use('/:userId', function (req, res, next) {
         User.findById(req.params.userId, function (err, user) {
             if (err) {
@@ -31,6 +34,8 @@ var routes = function (User) {
         .put(function (req, res) {
             req.user.name = req.body.name;
             req.user.email = req.body.email;
+            req.user.password = req.body.password;
+            req.user.birthYear = req.body.birthYear;
             req.user.save(function (err) {
                 if (err)
                     res.status(500).send(err);
@@ -64,6 +69,7 @@ var routes = function (User) {
                 }
             });
         });
+    
     return userRouter;
 };
 

@@ -4,8 +4,7 @@ var userController = function (User) {
         if (!req.body.name) {
             res.status(400);
             res.send('Name is required');
-        }
-        else {
+        } else {
             User.create(req.body, function (err, user) {
                 if (err) {
                     res.status(500);
@@ -32,10 +31,27 @@ var userController = function (User) {
             res.json(users);
         });
     };
-   
+
+    var authentication = function (req, res, next) {
+        var query = {};
+
+        if (req.body.email) {
+            query.email = req.body.email;
+            User.find(query, function (err, user) {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                res.status(200);
+                res.json(user);
+            });
+        }
+    };
+
     return {
         post: post,
-        getItems: getItems,        
+        getItems: getItems,
+        authentication: authentication
     };
 };
 

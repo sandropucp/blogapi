@@ -23,8 +23,7 @@ var storyController = function (Story, Comment) {
         }
         if (req.query.tag) {
             query.tags = req.query.tag;
-        }
-        //query = { tags: "javascript" };
+        }        
         Story.find(query, function (err, stories) {
                 if (err) {
                     res.status(500);

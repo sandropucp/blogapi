@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
-    gulpMocha = require('gulp-mocha'),
-    //env = require('gulp-env'),
+    gulpMocha = require('gulp-mocha'),    
     supertest = require('supertest'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish');
@@ -15,8 +14,7 @@ gulp.task('lint', () => {
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', ['lint'], function () {
-    //env({ vars: { ENV: 'Test' } });
+gulp.task('test', ['lint'], function () {    
     gulp.src('tests/**/*.js', { read: false })
         .pipe(gulpMocha({ reporter: 'spec' }))
         .once('end', function () {
@@ -25,14 +23,13 @@ gulp.task('test', ['lint'], function () {
 });
 
 gulp.task('serve', function () {
-    require('./app.js');
+    require('./server.js');
 });
 
 gulp.task('servedev', function () {
     nodemon({
-        script: 'app.js',
-        ext: 'js',
-        //env: {PORT: 8000},
+        script: 'server.js',
+        ext: 'js',        
         ignore: ['./node_modules/**']
     })
         .on('restart', function () {

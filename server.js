@@ -1,14 +1,26 @@
-var express = require('express'),
-    mongoose = require('mongoose'),
-    cors = require('cors'),
-    bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const _ = require('lodash');
 
-//require('dotenv').config({silent: true});
+var Comment = require('./app/models/commentModel');
+var User = require('./app/models/userModel');
+var Tag = require('./app/models/tagModel');
+var Category = require('./app/models/categoryModel');
+var Story = require('./app/models/storyModel');
+
+
+
+require('dotenv').config({silent: true});
+var app = express();
+var port = process.env.PORT || 3001;
 
 var db;
 console.log('Hellos from Blog API');
 console.log('process.env.ENV: ' + process.env.ENV);
 
+mongoose.Promise = global.Promise;
 if (process.env.ENV == 'Test') {    
     db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
@@ -16,29 +28,24 @@ else {
     db = mongoose.connect(process.env.DB_CONNECTIONSTRING);
 }
 
-console.log('process.env.ENV: ' + process.env.ENV);
-
-var app = express();
-var port = process.env.PORT || 3001;
-
-var Story = require('./app/models/storyModel');
-var Comment = require('./app/models/commentModel');
-storyRouter = require('./app/routes/storyRoutes')(Story, Comment);
-
-var User = require('./app/models/userModel');
-userRouter = require('./app/routes/userRoutes')(User);
+storyRoute = require('./app/routes/storyRoute')(Story, Comment);
+userRoute = require('./app/routes/userRoute')(User);
+tagRoute = require('./app/routes/tagRoute')(Tag);
+categoryRoute = require('./app/routes/categoryRoute')(Category);
 
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api/stories', storyRouter);
-app.use('/api/users', userRouter);
-
 app.get('/', function (req, res) {
     res.send('welcome to my Blog API!!');
 });
+
+app.use('/api/stories', storyRoute);
+app.use('/api/users', userRoute);
+app.use('/api/tags', tagRoute);
+app.use('/api/categories', categoryRoute);
 
 app.use(function (err, req, res, next) {
     // treat as 404
@@ -58,7 +65,7 @@ app.use(function (err, req, res, next) {
     }
 
     // error page
-    res.status(500).render('500', { error: err.stack });
+    res.status(500).send('500', { error: err.stack });
 });
 
 // assume 404 since no middleware responded

@@ -1,7 +1,7 @@
 module.exports = function (wallaby) {
     return {
         files: [            
-            'app.js',
+            'server.js',
             'app/**/*.js',
             { pattern: '.env', instrument: false }
         ],

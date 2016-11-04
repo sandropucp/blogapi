@@ -10,9 +10,8 @@ var Tag = require('./app/models/tagModel');
 var Category = require('./app/models/categoryModel');
 var Story = require('./app/models/storyModel');
 
-
-
 require('dotenv').config({silent: true});
+
 var app = express();
 var port = process.env.PORT || 3001;
 

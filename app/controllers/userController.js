@@ -32,26 +32,9 @@ var userController = function (User) {
         });
     };
 
-    var authentication = function (req, res, next) {
-        var query = {};
-
-        if (req.body.email) {
-            query.email = req.body.email;
-            User.findOne(query, function (err, user) {
-                if (err) {
-                    res.status(500);
-                    return next(err);
-                }
-                res.status(200);
-                res.json(user);
-            });
-        }
-    };
-
     return {
         post: post,
-        getItems: getItems,
-        authentication: authentication
+        getItems: getItems
     };
 };
 

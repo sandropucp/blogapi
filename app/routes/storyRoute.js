@@ -1,5 +1,4 @@
 const express = require('express');
-var {authenticate} = require('../middleware/authenticate');
 
 var route = function (Story, Comment) {//
     var storyRouter = express.Router();
@@ -7,7 +6,7 @@ var route = function (Story, Comment) {//
     var storyController = require('../controllers/storyController')(Story, Comment);
     storyRouter.route('/')
         .post(storyController.post)
-        .get(authenticate,storyController.getItems);
+        .get(storyController.getItems);
 
     storyRouter.use('/:storyId', function (req, res, next) {
         Story.findById(req.params.storyId)
@@ -28,7 +27,7 @@ var route = function (Story, Comment) {//
     });
 
     storyRouter.route('/:storyId')
-        .get(authenticate,function (req, res) {
+        .get(function (req, res) {
             res.status(200).json(req.story);
         })
         .put(function (req, res) {

@@ -8,9 +8,6 @@ var route = function (User) {
         .post(userController.post)
         .get(userController.getItems);
 
-    userRouter.route('/authentication')
-        .post(userController.authentication);
-
     userRouter.use('/:userId', function (req, res, next) {
         User.findById(req.params.userId)
             .then((user) => {
